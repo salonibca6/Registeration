@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quest | Create Account</title>
+<style>
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: #080d1c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Animated background */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: float 8s infinite ease-in-out;
+}
+
+.circle1 {
+    width: 300px;
+    height: 300px;
+    background: #4937c9;
+    top: -80px;
+    left: -70px;
+    opacity: 0.5;
+}
+
+.circle2 {
+    width: 250px;
+    height: 250px;
+    background: #087fba;
+    bottom: -60px;
+    right: -50px;
+    opacity: 0.5;
+    animation-delay: 2s;
+}
+
+.circle3 {
+    width: 150px;
+    height: 150px;
+    background: #8b5cf6;
+    bottom: 20%;
+    left: 15%;
+    opacity: 0.3;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-50px) translateX(30px);
+    }
+}
+
+/* Login container */
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    width: 420px;
+    padding: 45px 40px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    text-align: center;
+    animation: appear 0.8s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Logo */
+
+.logo {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #6655f5, #00b4db);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    box-shadow: 0 0 25px rgba(102,85,245,0.5);
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #aab3cb;
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+/* Input fields */
+
+.input-group {
+    position: relative;
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 15px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 16px;
+    color: #aab3cb;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group input:valid {
+    border-color: #7c6cff;
+    box-shadow: 0 0 12px rgba(124,108,255,0.2);
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -9px;
+    left: 12px;
+    font-size: 12px;
+    padding: 0 5px;
+    background: #182039;
+    color: #a99cff;
+}
+
+.password-group input {
+    padding-right: 65px;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 15px;
+    top: 17px;
+    font-size: 12px;
+    color: #a99cff;
+    cursor: pointer;
+}
+
+/* Options */
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 25px;
+    color: #aab3cb;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+a {
+    color: #a99cff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+}
+
+/* Login button */
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6655f5, #278bd8);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button span {
+    margin-left: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102,85,245,0.4);
+}
+
+button:hover span {
+    margin-left: 18px;
+}
+
+/* Divider */
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+    color: #8d97b2;
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+}
+
+/* Signup */
+
+.signup {
+    font-size: 13px;
+    color: #aab3cb;
+}
+
+/* Responsive */
+
+@media(max-width: 480px) {
+    .login-box {
+        width: 100%;
+        padding: 35px 25px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+</style></head>
+
+<body>
+
+    <div class="background">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+    </div>
+
+    <div class="login-container">
+
+        <div class="login-box signup-box">
+
+            <div class="logo">
+                <span>Q</span>
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p class="subtitle">
+                Start your learning journey with Quest.
+            </p>
+
+            <form id="signupForm" action="" method="post" >
+               {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" id="username"  name="username"  required>
+                    <label>Full Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="email"  name="email" required>
+                    <label>Email Address</label>
+                </div>
+
+                <div class="input-group password-group">
+                    <input type="password" id="password1"  name="password1" required>
+                    <label>Password</label>
+                    <span class="toggle-password"
+                          data-target="signupPassword">Show</span>
+                </div>
+
+                <div class="input-group password-group">
+                    <input type="password" id="password2"  name="password2" required>
+                    <label>Confirm Password</label>
+                    <span class="toggle-password"
+                          data-target="confirmPassword">Show</span>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        I agree to the Terms & Conditions
+                    </label>
+                </div>
+
+                <button type="submit" id="signupBtn">
+                    Create Account
+                    <span>→</span>
+                </button>
+
+            </form>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <p class="signup">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+    const signupForm = document.getElementById("signupForm");
+
+const signupBtn = document.getElementById("signupBtn");
+
+// Show / Hide Password
+
+document.querySelectorAll(".toggle-password").forEach(toggle => {
+
+    toggle.addEventListener("click", () => {
+
+        const targetId = toggle.dataset.target;
+        const input = document.getElementById(targetId);
+
+        if (input.type === "password") {
+            input.type = "text";
+            toggle.textContent = "Hide";
+        } else {
+            input.type = "password";
+            toggle.textContent = "Show";
+        }
+
+    });
+
+});
+
+// Signup Validation
+
+signupForm.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+
+    const email = document.getElementById("signupEmail").value.trim();
+
+    const password = document.getElementById("signupPassword").value;
+
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    const terms = document.getElementById("terms").checked;
+
+    // Check empty name
+
+    if (!name) {
+        alert("Please enter your name!");
+        return;
+    }
+
+    // Check password length
+
+    if (password.length < 6) {
+        alert("Password must contain at least 6 characters!");
+        return;
+    }
+
+    // Check password matching
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    // Check terms
+
+    if (!terms) {
+        alert("Please accept Terms & Conditions!");
+        return;
+    }
+
+    signupBtn.innerHTML = "Creating Account...";
+
+    setTimeout(() => {
+
+        alert("Signup form validated successfully!");
+
+        signupBtn.innerHTML = 'Create Account <span>→</span>';
+
+    }, 1000);
+
+});
+
+	// ]]>
+</script>
+</body>
+</html>
