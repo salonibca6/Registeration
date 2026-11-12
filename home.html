@@ -1,0 +1,1223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quest | Learn. Practice. Grow.</title>
+
+    <link rel="stylesheet" href="home.css">
+<style>
+
+/* =========================
+   GLOBAL STYLING
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --background: #070d20;
+    --card: #111a36;
+    --purple: #7954f5;
+    --blue: #2689f5;
+    --text: #ffffff;
+    --muted: #aab4d0;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 85px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(7, 13, 32, 0.92);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #9b4dff, #4057f5);
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    box-shadow: 0 0 20px rgba(121,84,245,0.4);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 15px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #a34cff, #248bff);
+    left: 0;
+    bottom: -8px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-btn,
+.signup-btn {
+    padding: 11px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.login-btn {
+    border: 1px solid var(--purple);
+}
+
+.signup-btn {
+    background: linear-gradient(120deg, #9148f5, #315df4);
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(121,84,245,0.35);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    min-height: 610px;
+    padding: 75px 7% 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 85% 50%,
+        rgba(80,45,220,0.2), transparent 35%);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    animation: slideLeft 1s ease;
+}
+
+.tagline {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid #855bff;
+    border-radius: 30px;
+    color: #c9a9ff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 6vw, 78px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span,
+.section-heading h2 span,
+.about-content h2 span {
+    background: linear-gradient(90deg, #a95cff, #378bff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero h2 {
+    font-size: 24px;
+    color: #d9def3;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.hero-content > p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 520px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 18px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 15px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: linear-gradient(120deg, #9148f5, #315df4);
+    box-shadow: 0 5px 25px rgba(121,84,245,0.25);
+}
+
+.secondary-btn {
+    border: 1px solid #8c76ff;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(121,84,245,0.3);
+}
+
+/* =========================
+   HERO VISUAL
+========================= */
+
+.hero-visual {
+    flex: 1;
+    min-height: 400px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: slideRight 1s ease;
+}
+
+.glow-circle {
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,
+        rgba(116,66,255,0.5),
+        rgba(27,135,255,0.2));
+
+    filter: blur(60px);
+    animation: pulse 4s infinite;
+}
+
+.code-window {
+    width: min(390px, 90%);
+    position: relative;
+    z-index: 2;
+
+    background: rgba(15,24,52,0.95);
+    border: 1px solid rgba(139,111,255,0.5);
+    border-radius: 18px;
+    overflow: hidden;
+
+    box-shadow: 0 20px 70px rgba(51,62,180,0.25);
+
+    transform: rotate(-4deg);
+    animation: float 5s ease-in-out infinite;
+}
+
+.window-header {
+    height: 50px;
+    background: #192447;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    gap: 7px;
+}
+
+.window-header span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fa626e;
+}
+
+.window-header span:nth-child(2) {
+    background: #f6c65b;
+}
+
+.window-header span:nth-child(3) {
+    background: #51d99b;
+}
+
+.window-header p {
+    margin-left: 12px;
+    color: #b5c3e8;
+    font-size: 13px;
+}
+
+.code-content {
+    padding: 30px 22px;
+    line-height: 2.2;
+    font-family: monospace;
+    color: #c8d5ff;
+    font-size: 14px;
+}
+
+.code-content p {
+    font-family: monospace;
+}
+
+.code-content span {
+    color: #65769f;
+    margin-right: 12px;
+}
+
+.code-content b {
+    color: #b68aff;
+}
+
+.success-text {
+    color: #53e6a6;
+    margin-top: 15px;
+}
+
+.floating-card {
+    position: absolute;
+    z-index: 3;
+    background: rgba(31,42,84,0.9);
+    border: 1px solid rgba(145,112,255,0.4);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: float 4s infinite ease-in-out;
+}
+
+.floating-card span {
+    font-size: 25px;
+}
+
+.floating-card h3 {
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+.floating-card p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.card-one {
+    top: 5%;
+    left: 0;
+}
+
+.card-two {
+    bottom: 5%;
+    right: 0;
+    animation-delay: 1.5s;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 32px;
+    animation: float 3s infinite ease-in-out;
+}
+
+.icon-one {
+    top: 0;
+    right: 15%;
+}
+
+.icon-two {
+    bottom: 5%;
+    left: 10%;
+    animation-delay: 1s;
+}
+
+.icon-three {
+    top: 50%;
+    right: 0;
+    animation-delay: 2s;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    padding: 35px 7%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 25px 20px;
+    background: linear-gradient(135deg,
+        rgba(25,34,72,0.9),
+        rgba(16,25,54,0.8));
+
+    border: 1px solid rgba(129,105,255,0.2);
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: #7954f5;
+    box-shadow: 0 10px 30px rgba(74,57,180,0.2);
+}
+
+.feature-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================
+   COURSES
+========================= */
+
+.courses-section {
+    padding: 100px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading > span {
+    color: #a98aff;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    margin: 15px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.course-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    border-color: #7954f5;
+    box-shadow: 0 15px 40px rgba(70,55,170,0.2);
+}
+
+.course-image {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 85px;
+}
+
+.java {
+    background: linear-gradient(135deg,#382c78,#174d91);
+}
+
+.python {
+    background: linear-gradient(135deg,#20537b,#40318a);
+}
+
+.c-lang {
+    background: linear-gradient(135deg,#243d75,#315b9d);
+}
+
+.course-info {
+    padding: 25px;
+}
+
+.course-label {
+    font-size: 10px;
+    color: #59e6a9;
+    letter-spacing: 1px;
+}
+
+.course-info h3 {
+    margin: 12px 0;
+    font-size: 21px;
+}
+
+.course-info p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 48px;
+}
+
+.course-info a {
+    display: inline-block;
+    color: #a98aff;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.course-info a:hover {
+    color: white;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-section {
+    padding: 90px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+
+    background: #0c142d;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 40px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+.about-visual {
+    flex: 1;
+    min-height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-circle {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#a04cff,#265df5);
+    box-shadow: 0 0 70px rgba(120,80,255,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 90px;
+    font-weight: 800;
+    z-index: 2;
+    animation: pulse 4s infinite;
+}
+
+.orbit {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(142,108,255,0.5);
+    border-radius: 50%;
+}
+
+.orbit-two {
+    width: 340px;
+    height: 220px;
+    transform: rotate(45deg);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta-section {
+    padding: 85px 20px;
+    text-align: center;
+
+    background: radial-gradient(
+        circle,
+        rgba(83,53,180,0.25),
+        transparent 70%
+    );
+}
+
+.cta-section h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    color: var(--muted);
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 55px 7% 20px;
+    background: #050a18;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.footer-brand p,
+.footer-links a {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.footer-links h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.footer-links a:hover {
+    color: #a98aff;
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    text-align: center;
+    color: #78829e;
+    font-size: 12px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media(max-width: 1000px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .hero {
+        padding: 65px 5%;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 768px) {
+
+    .navbar {
+        height: 75px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+        gap: 25px;
+
+        padding: 30px;
+        background: #101a38;
+        border-bottom: 1px solid #343e65;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-buttons {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 65px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content > p {
+        margin: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+        min-height: 380px;
+    }
+
+    .course-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-content {
+        width: 100%;
+    }
+}
+
+@media(max-width: 520px) {
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero h2 {
+        font-size: 19px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+    .about-content h2 {
+        font-size: 30px;
+    }
+
+    .cta-section h2 {
+        font-size: 27px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .hero-visual {
+        min-height: 330px;
+    }
+
+    .floating-card {
+        padding: 10px;
+    }
+
+    .code-content {
+        font-size: 11px;
+        padding: 20px 12px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+</style></head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <a href="home.html" class="brand">
+            <span class="logo">Q</span>
+            <span>QUEST</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="login-btn">Login</a>
+            <a href="signup.html" class="signup-btn">Sign Up</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="tagline">
+                ✦ LEARN • PRACTICE • GROW
+            </span>
+
+            <h1>
+                Welcome to
+                <span>Quest</span>
+            </h1>
+
+            <h2>
+                Your Personal Learning Platform
+                for a Better Tomorrow.
+            </h2>
+
+            <p>
+                Explore programming courses, improve your skills,
+                complete exciting challenges and build your
+                programming journey with Quest.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#courses" class="primary-btn">
+                    Start Learning <span>→</span>
+                </a>
+
+                <a href="#about" class="secondary-btn">
+                    Explore More
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="glow-circle"></div>
+
+            <div class="floating-card card-one">
+                <span>💻</span>
+                <h3>Programming</h3>
+                <p>Learn to code</p>
+            </div>
+
+            <div class="floating-card card-two">
+                <span>🚀</span>
+                <h3>Your Journey</h3>
+                <p>Keep progressing</p>
+            </div>
+
+            <div class="code-window">
+
+                <div class="window-header">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <p>quest.py</p>
+                </div>
+
+
+
+            </div>
+
+            <div class="floating-icon icon-one">📚</div>
+            <div class="floating-icon icon-two">⚡</div>
+            <div class="floating-icon icon-three">🎯</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES SECTION -->
+
+    <section class="features" id="features">
+
+        <div class="feature-card">
+            <div class="feature-icon">📖</div>
+            <h3>Interactive Learning</h3>
+            <p>Learn programming through structured lessons.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Track Progress</h3>
+            <p>Monitor your learning journey and achievements.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Complete Levels</h3>
+            <p>Unlock new challenges as you improve.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3>Learn by Practice</h3>
+            <p>Strengthen your programming knowledge.</p>
+        </div>
+
+    </section>
+
+
+    <!-- COURSES SECTION -->
+
+    <section class="courses-section" id="courses">
+
+        <div class="section-heading">
+            <span>EXPLORE YOUR INTEREST</span>
+            <h2>Choose Your <span>Learning Path</span></h2>
+            <p>Start learning a programming language today.</p>
+        </div>
+
+        <div class="course-container">
+
+            <div class="course-card">
+                <div class="course-image java">
+                    <span>☕</span>
+                </div>
+                <div class="course-info">
+                    <span class="course-label">AVAILABLE</span>
+                    <h3>Java Programming</h3>
+                    <p>Learn Java from fundamentals to advanced concepts.</p>
+                    <a href="courses/java.html">Explore Course →</a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image python">
+                    <span>🐍</span>
+                </div>
+                <div class="course-info">
+                    <span class="course-label">AVAILABLE</span>
+                    <h3>Python Programming</h3>
+                    <p>Explore Python and develop problem-solving skills.</p>
+                    <a href="courses/python.html">Explore Course →</a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image c-lang">
+                    <span>©</span>
+                </div>
+                <div class="course-info">
+                    <span class="course-label">AVAILABLE</span>
+                    <h3>C Programming</h3>
+                    <p>Build a strong foundation in programming.</p>
+                    <a href="courses/c.html">Explore Course →</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+
+    <section class="about-section" id="about">
+
+        <div class="about-content">
+
+            <span class="tagline">ABOUT QUEST</span>
+
+            <h2>
+                Learning is a journey.
+                <span>Make every step count.</span>
+            </h2>
+
+            <p>
+                Quest is a programming learning platform designed
+                to make learning simple, engaging and rewarding.
+
+                With structured courses, interactive levels and
+                progress tracking, learners can develop their
+                coding skills at their own pace.
+            </p>
+
+            <a href="signup.html" class="primary-btn">
+                Join Quest →
+            </a>
+
+        </div>
+
+        <div class="about-visual">
+            <div class="about-circle">
+                <span>Q</span>
+            </div>
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+        </div>
+
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+
+    <section class="cta-section">
+
+        <h2>Ready to Start Your Quest?</h2>
+
+        <p>
+            Every expert was once a beginner.
+            Start your programming journey today.
+        </p>
+
+        <a href="signup.html" class="primary-btn">
+            Create Your Account →
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer id="contact">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+                <h2>QUEST</h2>
+                <p>Learn. Practice. Grow.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#about">About</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Account</h3>
+                <a href="index.html">Login</a>
+                <a href="signup.html">Sign Up</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Quest Learning Platform. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <script src="home.js"></script>
+
+</body>
+</html>
